@@ -1,0 +1,20 @@
+PODS:
+  - CalculateCalendarLogic (0.2.5)
+  - FSCalendar (2.8.0)
+
+DEPENDENCIES:
+  - CalculateCalendarLogic
+  - FSCalendar
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CalculateCalendarLogic
+    - FSCalendar
+
+SPEC CHECKSUMS:
+  CalculateCalendarLogic: 27db31b8f27a42869ecf7ad0d43963a05af14193
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
+
+PODFILE CHECKSUM: c59fc7634e7f720442b69e626f0b33a98fd6ef64
+
+COCOAPODS: 1.5.3
