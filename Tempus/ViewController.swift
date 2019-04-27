@@ -85,7 +85,13 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
         print(selectDay)
+       
         calendar.setScope(.week, animated: true)
     }
+
+    
+    
+
 }
+
 
