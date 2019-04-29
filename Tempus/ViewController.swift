@@ -13,18 +13,30 @@ import CalculateCalendarLogic
 
 
 class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
+    
+    @IBOutlet weak var calendar: FSCalendar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // デリゲートの設定
-        //self.calendar.dataSource = self!
-        //self.calendar.delegate = self!
         
+        // デリゲートの設定
+        self.calendar.dataSource = self
+        self.calendar.delegate = self
     }
+    
+
+    @IBAction func buttonMonth(_ sender: Any) {
+        calendar.setScope(.month, animated: true)
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -32,6 +44,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
+    
     
     // 祝日判定を行い結果を返すメソッド(True:祝日)
     func judgeHoliday(_ date : Date) -> Bool {
@@ -85,10 +98,11 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
         print(selectDay)
-       
-        calendar.setScope(.week, animated: true)
-    }
 
+        calendar.scope = .week
+
+    }
+    
     
     
 
