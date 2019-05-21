@@ -20,12 +20,33 @@ enum ActionIdentifier: String {
 
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
-    
+
     @IBOutlet weak var calendar: FSCalendar!
     
-    var one: Int = 0
-    var two: Int = 0
-    var three: Int = 0
+    
+    var Dic: Dictionary = ["2019/05/18": 325]
+    
+    let f = DateFormatter()
+    
+    var one: Double = 0.0
+    var two: Double = 0.0
+    var three: Double = 0.0
+
+    
+    var resultOne: Int = 0
+    var resultTwo: Int = 0
+    var resultThree: Int = 0
+    var Result: Int = 0
+    
+    //最終的にグラフに代入する変数
+    var num1: Int = 0       //投資の比率
+    var num2: Int = 0       //消費の比率
+    var num3: Int = 0       //浪費の比率
+    
+    
+    //ユーザデフォルトの定義
+    var userDefaults = UserDefaults.standard
+    
     
     
     override func viewDidLoad() {
@@ -51,8 +72,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
                                               options: [])
         
         UNUserNotificationCenter.current().setNotificationCategories([category])
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-        
+        UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
+  
         
         let content = UNMutableNotificationContent()
         content.title = "この１時間はどうでしたか？"
@@ -61,6 +82,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         
         // categoryIdentifierを設定
         content.categoryIdentifier = "category_select"
+        
         
         // 60秒ごとに繰り返し通知
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
@@ -138,13 +160,40 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         return nil
     }
     
+    
+    //セルをタップした時
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         let selectDay = getDay(date)
-        print(selectDay)
+       
+        let mon = NSString(format: "%02d", selectDay.1)
+        let d = NSString(format: "%02d", selectDay.2)
         
+        
+        //print(selectDay.0)
+//        print("\(selectDay.0)/\(mon)/\(d)")
+//        print(Dic["\(selectDay.0)/\(mon)/\(d)"] as Any)
+//        print(Dic["2019/05/19"] as Any)
         calendar.scope = .week
+        
+        
+        var getData = userDefaults.dictionary(forKey: "ratio")
+        
+        
+        let data: Int = getData!["\(selectDay.0)/\(mon)/\(d)"] as! Int
+        
+        print(data)
+        
+        num1 = data / 100
+        num2 = (data - (num1 * 100)) / 10
+        num3 = (data - (num1 * 100 + num2 * 10))
+        
+        
+        
+        
 
+        
     }
+    
     
     // アクションを選択した際に呼び出されるメソッド
     @available(iOS 10.0, *)
@@ -158,25 +207,84 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         case ActionIdentifier.actionOne.rawValue:
             // 具体的な処理をここに記入
             // 変数oneをカウントアップしてラベルに表示
-            one = one + 1
+            one = one + 1.0
             print(one)
             
         case ActionIdentifier.actionTwo.rawValue:
             // 具体的な処理をここに記入
-            two = two + 1
+            two = two + 1.0
             print(String(two))
             
         case ActionIdentifier.actionThree.rawValue:
-            three = three + 1
+            three = three + 1.0
             print(String(three))
             
         default:
             ()
         }
         
+        
+        /***
+            resultOne = Double(one / one + two + three)
+            resultTwo = Double(two / one + two + three)
+            resultThree = Double(three / one + two + three)
+            
+            print(Int(resultOne * 100.0) + ":" + Int(resultTwo * 100.0) +  ":" +  Int(resultThree * 100.0))
+        
+        ***/
         completionHandler()
     }
-
+    
+    
+    
+    @IBAction func sleep(_ sender: Any) {
+       
+        f.dateStyle = .medium
+        
+        f.locale = Locale(identifier: "ja_JP")
+        let now = Date()
+        let today = f.string(from: now)
+        
+        resultOne = Int((one / (one + two + three)) * 10)
+        resultTwo = Int((two / (one + two + three)) * 10)
+        resultThree = Int((three / (one + two + three)) * 10)
+        
+        Result = resultOne * 100 + resultTwo * 10 + resultThree
+        
+        print("①" + String(resultOne))
+        print("②" + String(resultTwo))
+        print("③" + String(resultThree))
+        print("④" + String(Result))
+        
+        Dic[today] = Result
+        
+        //DictionaryのDicを保存
+        userDefaults.set(Dic, forKey: "ratio")
+        
+        
+        
+        
+        
+        
+        //Result = resultOne + ":" + resultTwo + ":" + resultThree
+        
+        //① Resultをarrayに代入する
+        //② arrayをUDに保存する
+        //③ 
+        
+       // print(String(Result))
+       /***
+        one = 0
+        two = 0
+        three = 0
+        
+        print(String(one))
+        print(String(two))
+        print(String(three))
+       ***/
+    
+    }
+    
 }
 
 
