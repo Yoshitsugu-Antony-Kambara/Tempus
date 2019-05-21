@@ -20,6 +20,7 @@ enum ActionIdentifier: String {
 
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
+    var graphView:PieGraphView!;
 
     @IBOutlet weak var calendar: FSCalendar!
     
@@ -51,6 +52,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // デリゲートの設定
         self.calendar.dataSource = self
         self.calendar.delegate = self
@@ -186,6 +189,19 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         num1 = data / 100
         num2 = (data - (num1 * 100)) / 10
         num3 = (data - (num1 * 100 + num2 * 10))
+        
+        var params = [Dictionary<String,AnyObject>]()
+        params.append(["value":num1 as AnyObject,"color":UIColor.red])
+        params.append(["value":num2 as AnyObject,"color":UIColor.blue])
+        params.append(["value":num3 as AnyObject,"color":UIColor.green])
+        //params.append(["value":10 as AnyObject,"color":UIColor.yellow])
+        
+        graphView = PieGraphView(frame: CGRect(x : 25, y : 200, width : 320, height : 320), params: params)
+        //graphView = PieGraphView(frame: CGRectMake(0, 30, 320, 320), params: params)
+        self.view.addSubview(graphView)
+        
+        graphView.startAnimating()
+
         
         
         

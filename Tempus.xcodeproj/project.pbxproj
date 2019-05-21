@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C9743A5061F4A9E4BAA0F18 /* Pods_Tempus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85ABC33337136B2C74178EB9 /* Pods_Tempus.framework */; };
+		141AD90222941BAC0037E203 /* PieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141AD90122941BAC0037E203 /* PieGraphView.swift */; };
 		1420C909226811B9003E4C0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1420C908226811B9003E4C0A /* AppDelegate.swift */; };
 		1420C90B226811B9003E4C0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1420C90A226811B9003E4C0A /* ViewController.swift */; };
 		1420C90E226811B9003E4C0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1420C90C226811B9003E4C0A /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		141AD90122941BAC0037E203 /* PieGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieGraphView.swift; sourceTree = "<group>"; };
 		1420C905226811B9003E4C0A /* Tempus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1420C908226811B9003E4C0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1420C90A226811B9003E4C0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				1420C908226811B9003E4C0A /* AppDelegate.swift */,
 				1420C90A226811B9003E4C0A /* ViewController.swift */,
 				1420C90C226811B9003E4C0A /* Main.storyboard */,
+				141AD90122941BAC0037E203 /* PieGraphView.swift */,
 				1420C90F226811BC003E4C0A /* Assets.xcassets */,
 				1420C911226811BC003E4C0A /* LaunchScreen.storyboard */,
 				1420C914226811BC003E4C0A /* Info.plist */,
@@ -398,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1420C90B226811B9003E4C0A /* ViewController.swift in Sources */,
+				141AD90222941BAC0037E203 /* PieGraphView.swift in Sources */,
 				1420C909226811B9003E4C0A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
