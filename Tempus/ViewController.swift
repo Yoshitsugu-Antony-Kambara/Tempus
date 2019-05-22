@@ -22,7 +22,11 @@ enum ActionIdentifier: String {
 class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
     var graphView:PieGraphView!;
 
-    @IBOutlet weak var calendar: FSCalendar!
+ @IBOutlet weak var calendar: FSCalendar!
+    
+    
+    @IBOutlet var labelTest: UILabel!
+    
     
     
     var Dic: Dictionary = ["2019/05/18": 325]
@@ -44,6 +48,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     var num2: Int = 0       //消費の比率
     var num3: Int = 0       //浪費の比率
     
+    var num10: String = " "
+    
     
     //ユーザデフォルトの定義
     var userDefaults = UserDefaults.standard
@@ -52,6 +58,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        labelTest.isHidden = true
         
         
         // デリゲートの設定
@@ -97,9 +104,14 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-   // @IBAction func buttonMonth(_ sender: Any) {
-     //   calendar.setScope(.month, animated: true)
-    //}
+    
+    @IBAction func buttonMonth(_ sender: Any) {
+        labelTest.isHidden = true
+        graphView.isHidden = true
+        calendar.scope = .month
+    }
+    
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -166,6 +178,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     //セルをタップした時
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+        labelTest.isHidden = false
         let selectDay = getDay(date)
        
         let mon = NSString(format: "%02d", selectDay.1)
@@ -182,7 +195,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         var getData = userDefaults.dictionary(forKey: "ratio")
         
         
-        let data: Int = getData!["\(selectDay.0)/\(mon)/\(d)"] as! Int
+        let data: Int = getData?["\(selectDay.0)/\(mon)/\(d)"] as! Int
         
         print(data)
         
@@ -190,17 +203,23 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         num2 = (data - (num1 * 100)) / 10
         num3 = (data - (num1 * 100 + num2 * 10))
         
+        
+        
+        
+        labelTest.text  = "投資 : 消費 : 浪費 = \(num1) : \(num2) : \(num3)"
+        
         var params = [Dictionary<String,AnyObject>]()
         params.append(["value":num1 as AnyObject,"color":UIColor.red])
         params.append(["value":num2 as AnyObject,"color":UIColor.blue])
         params.append(["value":num3 as AnyObject,"color":UIColor.green])
-        //params.append(["value":10 as AnyObject,"color":UIColor.yellow])
         
         graphView = PieGraphView(frame: CGRect(x : 25, y : 200, width : 320, height : 320), params: params)
         //graphView = PieGraphView(frame: CGRectMake(0, 30, 320, 320), params: params)
+        graphView.isHidden = false
         self.view.addSubview(graphView)
         
         graphView.startAnimating()
+        
 
         
         

@@ -18,30 +18,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdK-1p-g1e" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="33" width="375" height="513"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdK-1p-g1e" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="546"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.82236841927203896" blue="0.61212714929539325" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderDefaultColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
+                                        <real key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="wsI-yP-dgn" id="63P-Rd-Xjr"/>
                                     <outlet property="delegate" destination="wsI-yP-dgn" id="TWy-L5-KJk"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OH8-rX-UNa">
-                                <rect key="frame" x="87" y="554" width="200" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OH8-rX-UNa">
+                                <rect key="frame" x="87" y="594" width="200" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.049190990990000003" blue="0.065045121040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="sVQ-7N-U7C"/>
+                                </constraints>
+                                <state key="normal" title="寝る"/>
                                 <connections>
                                     <action selector="sleep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xDI-hs-khR"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gS-UF-8Hv">
+                                <rect key="frame" x="16" y="554" width="343" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0gS-UF-8Hv" secondAttribute="height" multiplier="343:32" id="Vsw-GL-gNC"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="euM-Iq-qwa"/>
+                                    <constraint firstAttribute="height" constant="32" id="f3y-M1-HQM"/>
+                                    <constraint firstAttribute="width" constant="343" id="zyz-fU-G1m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCl-LK-MZ5">
+                                <rect key="frame" x="16" y="594" width="45" height="53"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vtq-oc-8NI"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.75884871828083511" blue="0.41121800692310001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fUS-cG-DW0" firstAttribute="trailing" secondItem="OH8-rX-UNa" secondAttribute="trailing" constant="88" id="198-Kc-FwU"/>
+                            <constraint firstItem="dCl-LK-MZ5" firstAttribute="top" secondItem="0gS-UF-8Hv" secondAttribute="bottom" constant="8" symbolic="YES" id="FDb-Qa-o5L"/>
+                            <constraint firstItem="0gS-UF-8Hv" firstAttribute="top" secondItem="vdK-1p-g1e" secondAttribute="bottom" constant="8" symbolic="YES" id="IZW-2D-Zb1"/>
+                            <constraint firstItem="vdK-1p-g1e" firstAttribute="centerX" secondItem="0gS-UF-8Hv" secondAttribute="centerX" id="P9o-n6-q5d"/>
+                            <constraint firstItem="fUS-cG-DW0" firstAttribute="bottom" secondItem="OH8-rX-UNa" secondAttribute="bottom" constant="29" id="RQD-1H-P2x"/>
+                            <constraint firstItem="0gS-UF-8Hv" firstAttribute="leading" secondItem="dCl-LK-MZ5" secondAttribute="leading" id="ThA-aX-BIu"/>
+                            <constraint firstItem="vdK-1p-g1e" firstAttribute="top" secondItem="wsI-yP-dgn" secondAttribute="top" id="aZd-Ss-zC7"/>
+                            <constraint firstItem="vdK-1p-g1e" firstAttribute="leading" secondItem="wsI-yP-dgn" secondAttribute="leading" id="dg3-eP-AIf"/>
+                            <constraint firstItem="0gS-UF-8Hv" firstAttribute="centerX" secondItem="OH8-rX-UNa" secondAttribute="centerX" id="iGq-V6-HhZ"/>
+                            <constraint firstItem="0gS-UF-8Hv" firstAttribute="leading" secondItem="wsI-yP-dgn" secondAttribute="leadingMargin" id="iga-2t-ZiP"/>
+                            <constraint firstAttribute="bottom" secondItem="dCl-LK-MZ5" secondAttribute="bottom" constant="20" symbolic="YES" id="uef-NM-0ag"/>
+                            <constraint firstItem="dCl-LK-MZ5" firstAttribute="top" secondItem="OH8-rX-UNa" secondAttribute="top" id="ygk-Gm-rB6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fUS-cG-DW0"/>
                     </view>
                     <connections>
                         <outlet property="calendar" destination="vdK-1p-g1e" id="hB0-T2-mor"/>
+                        <outlet property="labelTest" destination="0gS-UF-8Hv" id="x2S-qd-LAL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
