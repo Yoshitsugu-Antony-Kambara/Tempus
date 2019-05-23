@@ -110,7 +110,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         
         
         // 60秒ごとに繰り返し通知
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: change)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: change)
         let request = UNNotificationRequest(identifier: "notification",
                                             content: content,
                                             trigger: trigger)
