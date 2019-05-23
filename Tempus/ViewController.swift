@@ -21,6 +21,8 @@ enum ActionIdentifier: String {
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
     var graphView:PieGraphView!;
+    
+    
 
     
     
@@ -29,6 +31,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     @IBOutlet var labelTest: UILabel!
     
     @IBOutlet var eraseButton: UIButton!
+    @IBOutlet var sleepButton: UIButton!
     
     
     var Dic: Dictionary = ["2019/05/18": 325]
@@ -66,6 +69,10 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     override func viewWillAppear(_ animated: Bool)  {
         
         super.viewDidLoad()
+        //sleepボタンの角を丸くした
+        sleepButton.layer.cornerRadius = 10.0
+        
+        eraseButton.isHidden = true
         
         labelTest.isHidden = true
         

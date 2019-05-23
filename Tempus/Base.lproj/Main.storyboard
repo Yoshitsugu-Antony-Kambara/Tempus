@@ -44,11 +44,14 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OH8-rX-UNa">
                                 <rect key="frame" x="87" y="594" width="200" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.049190990990000003" blue="0.065045121040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.25920045487024423" green="0.32936748926216874" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="sVQ-7N-U7C"/>
                                 </constraints>
-                                <state key="normal" title="寝る"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Sleep">
+                                    <color key="titleColor" red="0.8980392157" green="0.86769384029999996" blue="0.56085482220000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="sleep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xDI-hs-khR"/>
                                 </connections>
@@ -95,6 +98,7 @@
                         <outlet property="calendar" destination="vdK-1p-g1e" id="hB0-T2-mor"/>
                         <outlet property="eraseButton" destination="dCl-LK-MZ5" id="PRr-6q-bNy"/>
                         <outlet property="labelTest" destination="0gS-UF-8Hv" id="x2S-qd-LAL"/>
+                        <outlet property="sleepButton" destination="OH8-rX-UNa" id="fRj-vj-GAH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
