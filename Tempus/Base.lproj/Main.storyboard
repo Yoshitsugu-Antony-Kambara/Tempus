@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdK-1p-g1e" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="546"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.82236841927203896" blue="0.61212714929539325" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.7588487183" blue="0.41121800689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderDefaultColor">
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
@@ -53,7 +53,7 @@
                                     <action selector="sleep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xDI-hs-khR"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gS-UF-8Hv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gS-UF-8Hv">
                                 <rect key="frame" x="16" y="554" width="343" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0gS-UF-8Hv" secondAttribute="height" multiplier="343:32" id="Vsw-GL-gNC"/>
@@ -61,19 +61,20 @@
                                     <constraint firstAttribute="height" constant="32" id="f3y-M1-HQM"/>
                                     <constraint firstAttribute="width" constant="343" id="zyz-fU-G1m"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCl-LK-MZ5">
-                                <rect key="frame" x="16" y="594" width="45" height="53"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="16" y="594" width="63" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                <state key="normal" title="🔙"/>
                                 <connections>
                                     <action selector="buttonMonth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vtq-oc-8NI"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.8980392157" green="0.75884871828083511" blue="0.41121800692310001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.86769384025644147" blue="0.56085482215774007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fUS-cG-DW0" firstAttribute="trailing" secondItem="OH8-rX-UNa" secondAttribute="trailing" constant="88" id="198-Kc-FwU"/>
                             <constraint firstItem="dCl-LK-MZ5" firstAttribute="top" secondItem="0gS-UF-8Hv" secondAttribute="bottom" constant="8" symbolic="YES" id="FDb-Qa-o5L"/>
@@ -92,6 +93,7 @@
                     </view>
                     <connections>
                         <outlet property="calendar" destination="vdK-1p-g1e" id="hB0-T2-mor"/>
+                        <outlet property="eraseButton" destination="dCl-LK-MZ5" id="PRr-6q-bNy"/>
                         <outlet property="labelTest" destination="0gS-UF-8Hv" id="x2S-qd-LAL"/>
                     </connections>
                 </viewController>

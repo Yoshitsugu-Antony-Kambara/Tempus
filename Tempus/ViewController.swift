@@ -21,14 +21,15 @@ enum ActionIdentifier: String {
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
     var graphView:PieGraphView!;
-    
-    var chinko: String = " "
 
- @IBOutlet weak var calendar: FSCalendar!
     
+    var chinko: String = "A"
+    
+ @IBOutlet weak var calendar: FSCalendar!
     
     @IBOutlet var labelTest: UILabel!
     
+    @IBOutlet var eraseButton: UIButton!
     
     
     var Dic: Dictionary = ["2019/05/18": 325]
@@ -104,7 +105,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         
         
         // 60秒ごとに繰り返し通知
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: change)
         let request = UNNotificationRequest(identifier: "notification",
                                             content: content,
                                             trigger: trigger)
@@ -116,8 +117,13 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     @IBAction func buttonMonth(_ sender: Any) {
         labelTest.isHidden = true
+        if one == 0 && two == 0 && three == 0 {
+            print("nothing")
+        } else {
         graphView.isHidden = true
+        }
         calendar.scope = .month
+        eraseButton.isHidden = true
     }
     
    
@@ -187,7 +193,13 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     //セルをタップした時
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+        calendar.scope = .week
         
+        eraseButton.isHidden = false
+        
+        if one == 0 && two == 0 && three == 0 {
+            print("fuck")
+        } else {
         
         labelTest.isHidden = false
         let selectDay = getDay(date)
@@ -200,7 +212,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
 //        print("\(selectDay.0)/\(mon)/\(d)")
 //        print(Dic["\(selectDay.0)/\(mon)/\(d)"] as Any)
 //        print(Dic["2019/05/19"] as Any)
-        calendar.scope = .week
+        
         
         
         var getData = userDefaults.dictionary(forKey: "ratio")
@@ -232,7 +244,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         graphView.startAnimating()
         
 
-        
+        }
         
         
         
@@ -291,6 +303,10 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         let now = Date()
         let today = f.string(from: now)
         
+        if one == 0 && two == 0 && three == 0 {
+            print("nothing")
+        } else {
+        
         resultOne = Int((one / (one + two + three)) * 10)
         resultTwo = Int((two / (one + two + three)) * 10)
         resultThree = Int((three / (one + two + three)) * 10)
@@ -310,7 +326,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         //「寝る」ボタンを押したらcangeをfalseに変えて通知を止める
         change = false
         
-        
+        }
         
         
         
