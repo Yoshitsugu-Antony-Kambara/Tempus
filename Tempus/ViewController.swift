@@ -23,7 +23,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     var graphView:PieGraphView!;
 
     
-    var chinko: String = "A"
     
  @IBOutlet weak var calendar: FSCalendar!
     
@@ -68,7 +67,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         
         super.viewDidLoad()
         
-        print(chinko)
         labelTest.isHidden = true
         
         // デリゲートの設定
@@ -198,7 +196,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         eraseButton.isHidden = false
         
         if one == 0 && two == 0 && three == 0 {
-            print("fuck")
+            print("yeaaaaaaaaaaaaaaaah")
         } else {
         
         labelTest.isHidden = false
@@ -296,7 +294,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     
     @IBAction func sleep(_ sender: Any) {
-        chinko = "Fuuuuuuuuuuuuuuuuuuuuuuck"
+        
         f.dateStyle = .medium
         
         f.locale = Locale(identifier: "ja_JP")
