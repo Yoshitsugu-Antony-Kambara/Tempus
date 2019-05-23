@@ -21,6 +21,8 @@ enum ActionIdentifier: String {
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
     var graphView:PieGraphView!;
+    
+    var chinko: String = " "
 
  @IBOutlet weak var calendar: FSCalendar!
     
@@ -48,18 +50,25 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     var num2: Int = 0       //消費の比率
     var num3: Int = 0       //浪費の比率
     
-    var num10: String = " "
+    var num10: String = "A"
+    
+    //105行目のtriggerのrepeatsのtrue or false
+    var change: Bool = true
     
     
     //ユーザデフォルトの定義
     var userDefaults = UserDefaults.standard
     
     
+    //朝、一度アプリをひらけば、また通知がくる
+   
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        labelTest.isHidden = true
+    override func viewWillAppear(_ animated: Bool)  {
         
+        super.viewDidLoad()
+        
+        print(chinko)
+        labelTest.isHidden = true
         
         // デリゲートの設定
         self.calendar.dataSource = self
@@ -178,6 +187,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     //セルをタップした時
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
+        
+        
         labelTest.isHidden = false
         let selectDay = getDay(date)
        
@@ -273,7 +284,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     
     @IBAction func sleep(_ sender: Any) {
-       
+        chinko = "Fuuuuuuuuuuuuuuuuuuuuuuck"
         f.dateStyle = .medium
         
         f.locale = Locale(identifier: "ja_JP")
@@ -295,6 +306,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         
         //DictionaryのDicを保存
         userDefaults.set(Dic, forKey: "ratio")
+        
+        //「寝る」ボタンを押したらcangeをfalseに変えて通知を止める
+        change = false
         
         
         
