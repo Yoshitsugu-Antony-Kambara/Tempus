@@ -34,7 +34,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     @IBOutlet var sleepButton: UIButton!
     
     
-    var Dic: Dictionary = ["2019/05/18": 325]
+    var Dic: Dictionary = ["2019/05/18": 325, "2019/05/19": 343, "2019/05/20": 631, "2019/05/21": 451, "2019/05/22": 334, "2019/05/23": 811, "2019/05/24": 127]
     
     let f = DateFormatter()
     
@@ -56,7 +56,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     var num10: String = "A"
     
     //105行目のtriggerのrepeatsのtrue or false
-    var change: Bool = true
     
     
     //ユーザデフォルトの定義
@@ -66,7 +65,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     //朝、一度アプリをひらけば、また通知がくる
    
     
-    override func viewWillAppear(_ animated: Bool)  {
+    override func viewDidLoad() {
         
         super.viewDidLoad()
         //sleepボタンの角を丸くした
@@ -110,7 +109,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         
         
         // 60秒ごとに繰り返し通知
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3600, repeats: change)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
         let request = UNNotificationRequest(identifier: "notification",
                                             content: content,
                                             trigger: trigger)
@@ -127,6 +126,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         } else {
         graphView.isHidden = true
         }
+        
         calendar.scope = .month
         eraseButton.isHidden = true
     }
@@ -225,6 +225,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         
         let data: Int = getData?["\(selectDay.0)/\(mon)/\(d)"] as! Int
         
+            
         print(data)
         
         num1 = data / 100
@@ -300,6 +301,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
     
     
     
+    
     @IBAction func sleep(_ sender: Any) {
         
         f.dateStyle = .medium
@@ -329,7 +331,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate,FSCalen
         userDefaults.set(Dic, forKey: "ratio")
         
         //「寝る」ボタンを押したらcangeをfalseに変えて通知を止める
-        change = false
+        
         
         }
         
